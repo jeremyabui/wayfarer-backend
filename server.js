@@ -1,15 +1,17 @@
 const express = require("express");
 const app = express();
-const db = require('./models');
+const db = require("./models");
 
 const PORT = process.env.PORT || 4000;
 
-const routes = require('./routes');
+// Middleware
+
+const routes = require("./routes");
 // Middleware
 
 // Routes
-app.get('/', (req, res) => {
-    res.send('<h1>Project Wayfarer</h1>')
+app.get("/", (req, res) => {
+  res.send("<h1>Project Wayfarer</h1>");
 });
 
 // Api Route
