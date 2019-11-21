@@ -13,6 +13,6 @@ router.delete('/cities/delete/:cityId', ctrl.cities.destroy);
 
 
 router.get("/posts", ctrl.posts.allPosts);
-router.post("posts/newPost", ctrl.posts.newPost);
+router.post("/posts/newPost", ctrl.posts.newPost);
 
 module.exports = router;

@@ -87,7 +87,7 @@ const index = (req, res) => {
 // Update
 const update = (req, res) => {
     db.User.findByIdAndUpdate(
-        req.params.UserId,
+        req.params.userId,
         req.body,
         {new: true},
         (err, updatedUser) => {
