@@ -70,9 +70,23 @@ const logout = (req, res) => {
     });
 };
 
+const index = (req, res) => {
+    db.User.find({}, (err, allUsers) => {
+        if (err) return console.log(err);
+        res.json({
+            status: 200,
+            msg: "Show all users",
+            requestedAd: new Date().toLocaleString(),
+            count: allUsers.length,
+            data: allUsers
+        })
+    })
+}
+
 module.exports = {
     register,
     login,
     verify,
     logout,
+    index,
 }
