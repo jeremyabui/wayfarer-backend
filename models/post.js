@@ -4,18 +4,14 @@ const Schema = mongoose.Schema;
 const postSchema = new Schema({
   title: String,
   body: String,
-  cityName: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "City"
-    }
-  ],
-  author: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "User"
-    }
-  ],
+  cityName: {
+    type: Schema.Types.ObjectId,
+    ref: "City"
+  },
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  },
   comments: [String],
   date: {
     type: Date,

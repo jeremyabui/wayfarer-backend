@@ -16,6 +16,10 @@ const allPosts = (req, res) => {
 };
 
 const newPost = (req, res) => {
+  console.log(req.body);
+  if (!req.session.currentUser)
+    return res.status(401).json({ error: "Login required" });
+  req.body.author = req.session.currentUser;
   db.Post.create(req.body, (err, newPost) => {
     if (err) return console.log(err);
     res.json({
@@ -38,20 +42,26 @@ const postDetail = (req, res) => {
 };
 
 const editPost = (req, res) => {
-  db.Post.findByIdAndUpdate(
-    req.params.postId,
-    req.body,
-    { new: true },
-    (err, editedPost) => {
-      if (err) return console.log(err);
-      res.json({
-        status: 200,
-        count: 1,
-        data: editedPost,
-        requestedAt: new Date().toLocaleString()
-      });
-    }
-  );
+  if (req.body.author == req.session.currentUser) {
+    db.Post.findByIdAndUpdate(
+      req.params.postId,
+      req.body,
+      { new: true },
+      (err, editedPost) => {
+        if (err) return console.log(err);
+        res.json({
+          status: 200,
+          count: 1,
+          data: editedPost,
+          requestedAt: new Date().toLocaleString()
+        });
+      }
+    );
+  } else {
+    return res
+      .status(401)
+      .json({ error: "You are not the author of this post" });
+  }
 };
 
 const deletePost = (req, res) => {
