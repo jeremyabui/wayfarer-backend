@@ -1,4 +1,4 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 const bodyParser =  require("body-parser");
 const session = require('express-session');
@@ -34,4 +34,6 @@ app.use('/api/v1', routes.api);
 app.use('/api/v1/auth', routes.auth);
 
 // Server start
-app.listen(PORT, () => console.log(`Server connected at http://localhost:${PORT}`));
+app.listen(PORT, () =>
+  console.log(`Server connected at http://localhost:${PORT}`)
+);
