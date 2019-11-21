@@ -19,7 +19,6 @@ const UserSchema = mongoose.Schema({
     },
     currentCity: {
         type: String,
-        required: [true, 'Current City is required'],
     },
     profilePhoto: String,
     admin: {

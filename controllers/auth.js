@@ -3,10 +3,10 @@ const db = require('../models');
 
 //POST Register
 const register = (req, res) => {
-    if (!req.body.name || !req.body.email || !req.body.password || !req.body.username || !req.body.currentCity) {
+    if (!req.body.name || !req.body.email || !req.body.password || !req.body.username) {
         return res.status(400).json({ status: 400, message: 'Please enter your name, username, email, password, and current city'});
     }
-    db.User.findOne({ email: req.body.email}, (err, foundUser) => {
+    db.User.findOne({ email: req.body.email }, (err, foundUser) => {
         if (err) return res.status(500).json({ status: 500, message: 'Something went wrong. Please try again'});
         if (foundUser) res.status(400).json({ status: 400, message: 'Email address has already been registered. Please try again'});
         bcrypt.genSalt(10, (err, salt) => {
@@ -32,10 +32,10 @@ const register = (req, res) => {
 
 // Login
 const login = (req, res) => {
-    if (!req.body.email || !req.body.password) {
+    if (!req.body.username|| !req.body.password) {
         return res.status(400).json({ status: 400, message: 'Please enter your email and password'});
     }
-    db.User.findOne({ email: req.body.email} , (err, foundUser) => {
+    db.User.findOne({ username: req.body.username} , (err, foundUser) => {
         if (err) return res.status(500).json({ status: 500, message: 'Something went wrong. Please try again.'});
         if (!foundUser) {
             return res.status(400).json({ status: 400, message: 'Username or password is incorrect'});
