@@ -111,6 +111,60 @@ const update = (req, res) => {
         });
 }
 
+// Update with bcrypt
+// const updateNew = (req, res) => {
+//   db.User.findById(req.params.userId, (err, foundUser) => {
+//     if (err) console.log (err)
+
+//     if (req.body.username) {
+//       foundUser.username = req.body.username;
+//     }
+
+//     if (req.body.email) {
+//       foundUser.email = req.body.email;
+//     }
+
+//     if (req.body.password) {
+//       bcrypt.genSalt(10, (err, salt) => {
+//         if (err) return console.log(err);
+//           bcrypt.hash(req.body.password, salt, (err, hash) => {
+//             if (err) return console.log(err);
+//             const updatedPassword = {
+//               password: hash,
+//             };
+
+//             db.User.
+//           )
+
+        
+//         }
+//       })
+//     }
+
+    // if (req.body.posts) {
+    //   req.body.posts.forEach(entry => {
+    //     foundUser.posts.push(entry);
+    //   });
+    // }
+
+//     foundUser.save((err, updatedUser) => {
+//       if (err) {
+//         res.json({
+//           status: 400,
+//           message: "Error: Unable to update",
+//           err,
+//           requestedAt: new Date().toLocaleString(),
+//         });
+//       }
+//       res.json({
+//         status: 200, 
+//         data: updatedUser,
+//         requestedAt: new Date().toLocaleString(), 
+//       });
+//     });
+//   });
+// }
+
 module.exports = {
     register,
     login,
@@ -118,5 +172,6 @@ module.exports = {
     logout,
     index,
     update,
+    // updateNew,
     show,
 }
