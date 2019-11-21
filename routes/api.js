@@ -3,6 +3,7 @@ const router = express.Router();
 const ctrl = require("../controllers");
 
 //Post Cre
-router.post("/cities", ctrl.cities.index);
+router.get("/cities", ctrl.cities.index);
+router.post("/cities/create", ctrl.cities.create);
 
 module.exports = router;

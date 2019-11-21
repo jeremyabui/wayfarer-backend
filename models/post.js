@@ -7,5 +7,8 @@ const postSchema = new Schema ({
     cityName: City.Schema,
     author: User.schema,
     comment: [String],
-    date: Date,
+    date: {
+        type: Date,
+        default: Date.now
+    }
 })
