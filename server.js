@@ -15,7 +15,7 @@ app.get("/", (req, res) => {
 });
 
 // Api Route
-// app.use('/api/v1', routes.api);
+app.use("/api/v1", routes.api);
 
 // Server start
 app.listen(PORT, () =>

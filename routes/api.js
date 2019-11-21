@@ -1,7 +1,8 @@
-const express = require('express');
+const express = require("express");
 const router = express.Router();
-const ctrl = require('../controllers');
+const ctrl = require("../controllers");
 
 //Post Cre
-router.post('/cities', ctrl.cities.index);
+router.post("/cities", ctrl.cities.index);
 
+module.exports = router;
