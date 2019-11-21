@@ -37,38 +37,37 @@ const show = (req, res) => {
 };
 
 const update = (req, res) => {
-    db.City.findByIdAndUpdate(
-        req.params.cityId,
-        req.body,
-        { new: true},
-        (err, updatedCity) => {
-            if (err) return console.log(err);
-            res.json({
-                status: 200,
-                count: 1,
-                data: updatedCity,
-                requestedAt: new Date().toLocaleString(),
-            });
-        })
-}
+  db.City.findByIdAndUpdate(
+    req.params.cityId,
+    req.body,
+    { new: true },
+    (err, updatedCity) => {
+      if (err) return console.log(err);
+      res.json({
+        status: 200,
+        count: 1,
+        data: updatedCity,
+        requestedAt: new Date().toLocaleString()
+      });
+    }
+  );
+};
 
 const destroy = (req, res) => {
-    db.City.findByIdAndDelete(req.params.cityId, (err, deletedCity ) => {
-        if (err) return sendErr(res);
-        res.json({
-            status: 200,
-            data: deletedCity,
-            requestedAt: new Date().toLocaleString(),
-        });
+  db.City.findByIdAndDelete(req.params.cityId, (err, deletedCity) => {
+    if (err) return sendErr(res);
+    res.json({
+      status: 200,
+      data: deletedCity,
+      requestedAt: new Date().toLocaleString()
     });
+  });
 };
 
 module.exports = {
-
-    index,
-    create,
-    show,
-    update,
-    destroy, 
-}
-
+  index,
+  create,
+  show,
+  update,
+  destroy
+};
