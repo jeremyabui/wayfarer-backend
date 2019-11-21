@@ -1,10 +1,9 @@
-const express = require("express");
-const app = express();
-const bodyParser =  require("body-parser");
+const express = require('express');
+const bodyParser = require('body-parser');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const cors = require('cors');
-const db = require('./models');
+const app = express();
 
 require('dotenv').config();
 const PORT = process.env.PORT;

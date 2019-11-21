@@ -17,20 +17,6 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: [true, 'Password is required'],
     },
-    currentCity: {
-        type: String,
-        required: [true, 'Current City is required'],
-    },
-    profilePhoto: String,
-    admin: {
-        type: Boolean,
-        default: false,
-    },
-    comment: [String],
-    createdAt: {
-        type: Date,
-        default: Date.now,
-    }
 });
 
 const User = mongoose.model('User', UserSchema);
