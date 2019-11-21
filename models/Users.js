@@ -19,7 +19,10 @@ const UserSchema = mongoose.Schema({
         required: [true, 'Password is required'],
     },
     currentCity: String,
-    profilePhoto: String,
+    profilePhoto: {
+        type: String,
+        default: "https://icon-library.net/images/default-user-icon/default-user-icon-8.jpg",
+    },
     admin: {
         type: Boolean,
         default: false,

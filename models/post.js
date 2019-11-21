@@ -2,8 +2,14 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
-  title: String,
-  body: String,
+  title: {
+    type: String,
+    required: [true, 'Post title is required'],
+  },
+  body: {
+    type: String,
+    required: [true, 'Post body is required'],
+  },
   cityName: [
     {
       type: Schema.Types.ObjectId,
