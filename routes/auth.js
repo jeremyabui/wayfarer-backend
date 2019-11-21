@@ -7,5 +7,6 @@ router.post('/login', ctrl.auth.login);
 router.get('/verify', ctrl.auth.verify);
 router.post('/logout', ctrl.auth.logout);
 router.get('/index', ctrl.auth.index);
+router.put('/update/:userId', ctrl.auth.update);
 
 module.exports = router;
