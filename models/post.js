@@ -10,12 +10,11 @@ const postSchema = new Schema({
       ref: "City"
     }
   ],
-  author: [
+  author:
     {
       type: Schema.Types.ObjectId,
       ref: "User"
-    }
-  ],
+    },
   comments: [String],
   date: {
     type: Date,
