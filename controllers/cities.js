@@ -20,7 +20,7 @@ const create = (req, res) => {
     res.json({
       status: 201,
       message: "Created new city",
-      requetedAt: new Date().toLocaleString(),
+      requestedAt: new Date().toLocaleString(),
       data: createdCity
     });
   });

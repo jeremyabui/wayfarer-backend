@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const UserSchema = mongoose.Schema({
     name: {
@@ -19,13 +20,18 @@ const UserSchema = mongoose.Schema({
     },
     currentCity: {
         type: String,
-        required: [true, 'Current City is required'],
     },
     profilePhoto: String,
     admin: {
         type: Boolean,
         default: false,
     },
+    posts: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Post",
+        }
+    ],
     comment: [String],
     createdAt: {
         type: Date,
