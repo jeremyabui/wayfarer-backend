@@ -16,7 +16,7 @@ const postSchema = new Schema({
       ref: "User"
     }
   ],
-  comment: [String],
+  comments: [String],
   date: {
     type: Date,
     default: Date.now

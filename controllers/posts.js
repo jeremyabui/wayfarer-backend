@@ -27,7 +27,48 @@ const newPost = (req, res) => {
   });
 };
 
+const postDetail = (req, res) => {
+  db.Post.findById(req.params.postId, (err, foundPost) => {
+    if (err) return res.status(500).json(err);
+    res.json({
+      status: 200,
+      data: foundPost
+    });
+  });
+};
+
+const editPost = (req, res) => {
+  db.Post.findByIdAndUpdate(
+    req.params.postId,
+    req.body,
+    { new: true },
+    (err, editedPost) => {
+      if (err) return console.log(err);
+      res.json({
+        status: 200,
+        count: 1,
+        data: editedPost,
+        requestedAt: new Date().toLocaleString()
+      });
+    }
+  );
+};
+
+const deletePost = (req, res) => {
+  db.Post.findByIdAndDelete(req.params.postId, (err, deletedPost) => {
+    if (err) return sendErr(res);
+    res.json({
+      status: 200,
+      data: deletedPost,
+      requestedAt: new Date().toLocaleString()
+    });
+  });
+};
+
 module.exports = {
   allPosts,
-  newPost
+  newPost,
+  postDetail,
+  editPost,
+  deletePost
 };
