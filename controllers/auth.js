@@ -94,76 +94,66 @@ const show = (req, res) => {
     });
 };
 
-// Update
-const update = (req, res) => {
-    db.User.findByIdAndUpdate(
-        req.params.userId,
-        req.body,
-        {new: true},
-        (err, updatedUser) => {
-            if (err) return console.log(err);
-            res.json({
-                status: 200,
-                count: 1,
-                data: updatedUser,
-                requestedAt: new Date().toLocaleString()
-            });
-        });
-}
 
 // Update with bcrypt
-// const updateNew = (req, res) => {
-//   db.User.findById(req.params.userId, (err, foundUser) => {
-//     if (err) console.log (err)
+const update = (req, res) => {
+  db.User.findById(req.params.userId, (err, foundUser) => {
+    if (err) console.log (err)
 
-//     if (req.body.username) {
-//       foundUser.username = req.body.username;
-//     }
+    if (req.body.name) {
+      foundUser.name = req.body.name;
+    }
 
-//     if (req.body.email) {
-//       foundUser.email = req.body.email;
-//     }
+    if (req.body.username) {
+      foundUser.username = req.body.username;
+    }
 
-//     if (req.body.password) {
-//       bcrypt.genSalt(10, (err, salt) => {
-//         if (err) return console.log(err);
-//           bcrypt.hash(req.body.password, salt, (err, hash) => {
-//             if (err) return console.log(err);
-//             const updatedPassword = {
-//               password: hash,
-//             };
+    if (req.body.email) {
+      foundUser.email = req.body.email;
+    }
 
-//             db.User.
-//           )
+    if (req.body.password) {
+      let updatedPassword = bcrypt.hashSync(req.body.password, 10)
+      foundUser.password = updatedPassword
+    }
 
-        
-//         }
-//       })
-//     }
+    if (req.body.currentCity) {
+      foundUser.currentCity = req.body.currentCity;
+    }
 
-    // if (req.body.posts) {
-    //   req.body.posts.forEach(entry => {
-    //     foundUser.posts.push(entry);
-    //   });
-    // }
+    if (req.body.profilePhoto) {
+      foundUser.profilePhoto = req.body.profilePhoto;
+    }
 
-//     foundUser.save((err, updatedUser) => {
-//       if (err) {
-//         res.json({
-//           status: 400,
-//           message: "Error: Unable to update",
-//           err,
-//           requestedAt: new Date().toLocaleString(),
-//         });
-//       }
-//       res.json({
-//         status: 200, 
-//         data: updatedUser,
-//         requestedAt: new Date().toLocaleString(), 
-//       });
-//     });
-//   });
-// }
+    if (req.body.posts) {
+      req.body.posts.forEach(entry => {
+        foundUser.posts.push(entry);
+      });
+    }
+
+    if (req.body.comment) {
+      req.body.comments.forEach(entry => {
+        foundUser.comments.push(entry);
+      });
+    }
+
+    foundUser.save((err, updatedUser) => {
+      if (err) {
+        res.json({
+          status: 400,
+          message: "Error: Unable to update",
+          err,
+          requestedAt: new Date().toLocaleString(),
+        });
+      }
+      res.json({
+        status: 200, 
+        data: updatedUser,
+        requestedAt: new Date().toLocaleString(), 
+      });
+    });
+  });
+}
 
 module.exports = {
     register,
@@ -172,6 +162,5 @@ module.exports = {
     logout,
     index,
     update,
-    // updateNew,
     show,
 }

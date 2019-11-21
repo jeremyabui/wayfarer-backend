@@ -18,10 +18,7 @@ const UserSchema = mongoose.Schema({
         type: String,
         required: [true, 'Password is required'],
     },
-    currentCity: {
-        type: String,
-        required: [true, 'Current City is required'],
-    },
+    currentCity: String,
     profilePhoto: String,
     admin: {
         type: Boolean,
@@ -33,7 +30,7 @@ const UserSchema = mongoose.Schema({
             ref: "Post",
         }
     ],
-    comment: [String],
+    comments: [String],
     createdAt: {
         type: Date,
         default: Date.now,
