@@ -70,6 +70,7 @@ const logout = (req, res) => {
     });
 };
 
+// Index
 const index = (req, res) => {
     db.User.find({}, (err, allUsers) => {
         if (err) return console.log(err);
@@ -83,10 +84,28 @@ const index = (req, res) => {
     })
 }
 
+// Update
+const update = (req, res) => {
+    db.User.findByIdAndUpdate(
+        req.params.UserId,
+        req.body,
+        {new: true},
+        (err, updatedUser) => {
+            if (err) return console.log(err);
+            res.json({
+                status: 200,
+                count: 1,
+                data: updatedUser,
+                requestedAt: new Date().toLocaleString()
+            });
+        });
+}
+
 module.exports = {
     register,
     login,
     verify,
     logout,
     index,
+    update,
 }
