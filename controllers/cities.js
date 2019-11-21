@@ -6,7 +6,7 @@ const index = (req, res) => {
     if (err) return console.log(err);
     res.json({
       status: 200,
-      msg: "Show all cities",
+      message: "Show all cities",
       requestedAt: new Date().toLocaleString(),
       count: allCities.length,
       data: allCities

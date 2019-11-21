@@ -16,4 +16,11 @@ router.get("/posts/:postId", ctrl.posts.postDetail);
 router.put("/posts/editPost/:postId", ctrl.posts.editPost);
 router.delete("/posts/deletePost/:postId", ctrl.posts.deletePost);
 
+// COMMENTS
+router.get("/comments", ctrl.comments.index);
+router.post('/comments/create', ctrl.comments.create);
+router.get('/comments/:id', ctrl.comments.show);
+router.put('/comments/:id', ctrl.comments.upDate);
+router.delete('/comments/:id', ctrl.comments.destroy);
+
 module.exports = router;
