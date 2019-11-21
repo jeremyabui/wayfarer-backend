@@ -3,6 +3,7 @@ const app = express();
 const bodyParser =  require("body-parser");
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const cors = require('cors');
 const db = require('./models');
 
 require('dotenv').config();
@@ -11,6 +12,14 @@ const PORT = process.env.PORT;
 const routes = require('./routes');
 
 //------- Middleware -------//
+
+// CORS
+const corsOptions = {
+  origin: ['http://localhost:3000'],
+  credentials: true,
+  optionsSuccessStatus: 200
+}
+app.use(cors(corsOptions));
 
 // Session
 app.use(session({
