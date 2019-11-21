@@ -84,6 +84,16 @@ const index = (req, res) => {
     })
 }
 
+const show = (req, res) => {
+    db.User.findById(req.params.userId, (err, foundUser) => {
+        if (err) return res.status(500).json(err);
+        res.json({
+            status: 200,
+            data: foundUser
+        });
+    });
+};
+
 // Update
 const update = (req, res) => {
     db.User.findByIdAndUpdate(
@@ -108,4 +118,5 @@ module.exports = {
     logout,
     index,
     update,
+    show,
 }

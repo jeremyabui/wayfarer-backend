@@ -8,5 +8,6 @@ router.get('/verify', ctrl.auth.verify);
 router.post('/logout', ctrl.auth.logout);
 router.get('/index', ctrl.auth.index);
 router.put('/update/:userId', ctrl.auth.update);
+router.get('/:userId', ctrl.auth.show);
 
 module.exports = router;
