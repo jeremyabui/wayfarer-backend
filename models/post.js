@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
+<<<<<<< HEAD
   title: {
     type: String,
     required: [true, 'Post title is required'],
@@ -23,6 +24,19 @@ const postSchema = new Schema({
     }
   ],
   comment: [String],
+=======
+  title: String,
+  body: String,
+  cityName: {
+    type: Schema.Types.ObjectId,
+    ref: "City"
+  },
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  },
+  comments: [String],
+>>>>>>> submaster
   date: {
     type: Date,
     default: Date.now
