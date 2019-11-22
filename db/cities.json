@@ -1,0 +1,42 @@
+[
+  {
+    "name": "San Francisco",
+    "description": "This is San Francisco's description",
+    "photo": "https://images.unsplash.com/photo-1449034446853-66c86144b0ad?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80"
+  },
+  {
+    "name": "New York",
+    "description": "This is a New York description",
+    "photo": "https://images.unsplash.com/photo-1522083165195-3424ed129620?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2060&q=80"
+  },
+  {
+    "name": "Paris",
+    "description": "This is a Paris description",
+    "photo": "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?ixlib=rb-1.2.1&auto=format&fit=crop&w=1504&q=80"
+  },
+  {
+    "name": "Tokyo",
+    "description": "This is a Tokyo description",
+    "photo": "https://images.unsplash.com/photo-1540959733332-eab4deabeeaf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+  },
+  {
+    "name": "Honolulu",
+    "description": "This is a Honolulu description",
+    "photo": "https://images.unsplash.com/photo-1547537352-ae90c682877e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+  },
+  {
+    "name": "Melbourne",
+    "description": "This is a Melbourne description",
+    "photo": "https://images.unsplash.com/photo-1545044846-351ba102b6d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+  },
+  {
+    "name": "Berlin",
+    "description": "This is a Berlin description",
+    "photo": "https://images.unsplash.com/photo-1551036746-04a04d0aaa22?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+  },
+  {
+    "name": "Amsterdam",
+    "description": "This is a Amsterdam description",
+    "photo": "https://images.unsplash.com/photo-1534351590666-13e3e96b5017?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60"
+  }
+]
