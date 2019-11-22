@@ -27,13 +27,15 @@ const create = (req, res) => {
 };
 
 const show = (req, res) => {
-  db.City.findById(req.params.cityId, (err, foundCity) => {
-    if (err) return res.status(500).json(err);
-    res.json({
-      status: 200,
-      data: foundCity
+  db.City.findById(req.params.cityId)
+    .populate("name")
+    .exec((err, foundCity) => {
+      if (err) return res.status(500).json(err);
+      res.json({
+        status: 200,
+        data: foundCity
+      });
     });
-  });
 };
 
 const update = (req, res) => {
