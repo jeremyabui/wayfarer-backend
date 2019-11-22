@@ -137,7 +137,9 @@ const allUsers = (req, res) => {
 };
 
 const userDetail = (req, res) => {
-  db.User.findById(req.params.userId, (err, foundUser) => {
+  db.User.findById(req.params.userId)
+    .populate('posts')
+    .exec((err, foundUser) => {
     if (err) return res.status(500).json(err);
     res.json({
       status: 200,
