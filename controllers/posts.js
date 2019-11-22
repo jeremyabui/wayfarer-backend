@@ -1,10 +1,10 @@
 const db = require("../models");
 
 // This is when we have the postDetail page
-const cityId = new URL(location.href).searchParams.get("id");
+// const cityId = new URL(location.href).searchParams.get("id");
 
 // This is hard coded so far
-// const cityId = "5dd6dacccba6bb5b72a016c1";
+const cityId = "5dd6dacccba6bb5b72a016c1";
 // Index
 
 const allPosts = (req, res) => {
@@ -21,7 +21,6 @@ const allPosts = (req, res) => {
 };
 
 // User ID post
-
 
 const newPost = (req, res) => {
   console.log(req.body);
@@ -42,14 +41,14 @@ const newPost = (req, res) => {
 
 const postDetail = (req, res) => {
   db.Post.findById(req.params.postId)
-    .populate('author') 
+    .populate("author")
     .exec((err, foundPost) => {
-    if (err) return res.status(500).json(err);
-    res.json({
-      status: 200,
-      data: foundPost
+      if (err) return res.status(500).json(err);
+      res.json({
+        status: 200,
+        data: foundPost
+      });
     });
-  });
 };
 
 const editPost = (req, res) => {
