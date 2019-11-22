@@ -9,5 +9,6 @@ router.delete("/logout", ctrl.auth.logout);
 router.get("/index", ctrl.auth.allUsers);
 router.put("/update/:userId", ctrl.auth.updateUser);
 router.get("/:userId", ctrl.auth.userDetail);
+router.delete("/delete/:userId", ctrl.auth.deleteUser);
 
 module.exports = router;

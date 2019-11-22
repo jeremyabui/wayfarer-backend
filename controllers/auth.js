@@ -209,6 +209,17 @@ const updateUser = (req, res) => {
   });
 };
 
+const deleteUser = (req, res) => {
+  db.User.findByIdAndDelete(req.params.userId, (err, deletedUser) => {
+    if (err) return sendErr(res);
+    res.json({
+      status: 200,
+      data: deletedUser,
+      requestedAt: new Date().toLocaleString()
+    });
+  });
+};
+
 module.exports = {
   register,
   login,
@@ -216,5 +227,6 @@ module.exports = {
   logout,
   allUsers,
   updateUser,
-  userDetail
+  userDetail,
+  deleteUser
 };
