@@ -1,5 +1,10 @@
 const db = require("../models");
 
+// This is when we have the postDetail page
+// const cityId = new URL(location.href).searchParams.get("id");
+
+// This is hard coded so far
+const cityId = "5dd6dacccba6bb5b72a016c1";
 // Index
 
 const allPosts = (req, res) => {
@@ -15,11 +20,15 @@ const allPosts = (req, res) => {
   });
 };
 
+// User ID post
+
+
 const newPost = (req, res) => {
   console.log(req.body);
-  if (!req.session.currentUser)
-    return res.status(401).json({ error: "Login required" });
-  req.body.author = req.session.currentUser;
+  // if (!req.session.currentUser)
+  //   return res.status(401).json({ error: "Login required" });
+  // req.body.author = req.session.currentUser;
+  req.body.cityName = `${cityId}`;
   db.Post.create(req.body, (err, newPost) => {
     if (err) return console.log(err);
     res.json({
@@ -32,7 +41,9 @@ const newPost = (req, res) => {
 };
 
 const postDetail = (req, res) => {
-  db.Post.findById(req.params.postId, (err, foundPost) => {
+  db.Post.findById(req.params.postId)
+    .populate('author') 
+    .exec((err, foundPost) => {
     if (err) return res.status(500).json(err);
     res.json({
       status: 200,
