@@ -41,7 +41,9 @@ const newPost = (req, res) => {
 };
 
 const postDetail = (req, res) => {
-  db.Post.findById(req.params.postId, (err, foundPost) => {
+  db.Post.findById(req.params.postId)
+    .populate('author') 
+    .exec((err, foundPost) => {
     if (err) return res.status(500).json(err);
     res.json({
       status: 200,
