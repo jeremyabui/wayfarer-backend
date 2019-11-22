@@ -84,7 +84,7 @@ const login = (req, res) => {
           message: "Something went wrong. Please try again."
         });
       if (isMatch) {
-        req.session.currentuser = { id: foundUser._id };
+        req.session.currentUser = { id: foundUser._id };
         return res
           .status(200)
           .json({ status: 200, message: "Success", data: foundUser._id });
@@ -109,6 +109,7 @@ const verify = (req, res) => {
 
 // Logout
 const logout = (req, res) => {
+    console.log(req.session)
   if (!req.session.currentUser)
     return res.status(401).json({ status: 401, message: "Unauthorized" });
   req.session.destroy(err => {
