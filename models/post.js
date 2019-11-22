@@ -2,20 +2,23 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const postSchema = new Schema({
-  title: String,
-  body: String,
-  cityName: [
-    {
+  title: {
+    type: String,
+    required: [true, 'Post title is required'],
+  },
+  body: {
+    type: String,
+    required: [true, 'Post body is required'],
+  },
+  cityName: {
       type: Schema.Types.ObjectId,
       ref: "City"
-    }
-  ],
-  author:
-    {
+    },
+  author: {
       type: Schema.Types.ObjectId,
       ref: "User"
     },
-  comments: [String],
+  comment: [String],
   date: {
     type: Date,
     default: Date.now
