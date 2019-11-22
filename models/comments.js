@@ -7,7 +7,7 @@ const commentSchema = new Schema({
         required: [true, 'Comment text is required']
     }, 
     author: {
-        type: Schema.Types.ObjectId,
+        type: mongoose.Schema.Types.ObjectId,
         ref: "User",
     },
     date: {

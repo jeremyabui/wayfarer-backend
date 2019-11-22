@@ -11,11 +11,11 @@ const postSchema = new Schema({
     required: [true, 'Post body is required'],
   },
   cityName: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "City"
     },
   author: {
-      type: Schema.Types.ObjectId,
+      type: mongoose.Schema.Types.ObjectId,
       ref: "User"
     },
   comment: [String],
