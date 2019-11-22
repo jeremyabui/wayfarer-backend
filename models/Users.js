@@ -28,12 +28,12 @@ const UserSchema = mongoose.Schema({
         type: Boolean,
         default: false,
     },
-    // posts: [
-    //     {
-    //         type: Schema.Types.ObjectId,
-    //         ref: "Post",
-    //     }
-    // ],
+    posts: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: "Post",
+        }
+    ],
     comments: [String],
     createdAt: {
         type: Date,
