@@ -28,7 +28,7 @@ const create = (req, res) => {
 
 const show = (req, res) => {
   db.City.findById(req.params.cityId)
-    .populate("name")
+    .populate('posts')
     .exec((err, foundCity) => {
       if (err) return res.status(500).json(err);
       res.json({
