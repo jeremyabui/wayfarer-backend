@@ -27,6 +27,7 @@ const newPost = (req, res) => {
   if (!req.session.currentUser)
     return res.status(401).json({ error: "Login required" });
   req.body.author = req.session.currentUser;
+  // Need to figure out how to grab cityID from front end / req.body
   req.body.cityName = `${cityId}`;
   db.Post.create(req.body, (err, newPost) => {
     if (err) return console.log(err);
