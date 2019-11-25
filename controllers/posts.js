@@ -31,31 +31,35 @@ const newPost = (req, res) => {
   req.body.cityName = `${cityId}`;
   db.Post.create(req.body, (err, newPost) => {
     if (err) return console.log(err);
-    res.json({
-      status: 201,
-      message: "Created New Post",
-      requestedAt: new Date().toLocaleString(),
-      data: newPost
-    })
-    // Then find city in database
-      .then(db.City.findByIdAndUpdate(res.data.cityName, (err, foundCity) => {
-        if (err) return res.status(500);
-        // Push ID of post to city's post property
-        foundCity.posts.push(req.body._id);
-        // Save city
-        foundCity.save((err, updatedCity) => {
-          if (err) {
-            return res.status(400);
-          }
-          // Respond with updated city
-          res.json({
-            status: 200,
-            data: updatedCity,
+    res
+      .json({
+        status: 201,
+        message: "Created New Post",
+        requestedAt: new Date().toLocaleString(),
+        data: newPost
+      })
+      // Then find city in database
+      .then(
+        db.City.findByIdAndUpdate(res.data.cityName, (err, foundCity) => {
+          if (err) return res.status(500);
+          // Push ID of post to city's post property
+          foundCity.posts.push(req.body._id);
+          // Save city
+          foundCity.save((err, updatedCity) => {
+            if (err) {
+              return res.status(400);
+            }
+            // Respond with updated city
+            res.json({
+              status: 200,
+              data: updatedCity
+            });
           });
         })
-      }))
-        // Then find user by ID (current session)
-        .then(db.User.findByIdAndUpdate(req.session.currentUser, (err, foundUser) => {
+      )
+      // Then find user by ID (current session)
+      .then(
+        db.User.findByIdAndUpdate(req.session.currentUser, (err, foundUser) => {
           if (err) return res.status(500);
           // Push ID of post to user's post property
           foundUser.posts.push(req.body._id);
@@ -64,10 +68,11 @@ const newPost = (req, res) => {
             if (err) return res.status(400);
             res.json({
               status: 200,
-              data: updatedUser,
-            })
-          })
-        }))
+              data: updatedUser
+            });
+          });
+        })
+      );
   });
 };
 
