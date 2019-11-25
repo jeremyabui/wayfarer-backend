@@ -82,6 +82,7 @@ const newPost = (req, res) => {
       foundCity.save((err, updatedCity) => {
         if (err) return res.status(400);
         db.User.findById(req.body.author, (err, foundUser) => {
+
           if (err) return res.status(500);
           // Push ID of post to user's post property
           foundUser.posts.push(newPost._id);
@@ -89,6 +90,7 @@ const newPost = (req, res) => {
           foundUser.save((err, updatedUser) => {
             if (err) return res.status(400);
             res.json({
+
               status: 201,
               message: "Created New Post",
               requestedAt: new Date().toLocaleString(),
@@ -100,6 +102,7 @@ const newPost = (req, res) => {
     })
   })
 };
+
 
 const postDetail = (req, res) => {
   db.Post.findById(req.params.postId)
