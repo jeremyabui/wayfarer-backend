@@ -114,7 +114,7 @@ const postDetail = (req, res) => {
 };
 
 const editPost = (req, res) => {
-  if (req.body.author == req.session.currentUser) {
+  if (req.body.author == req.session.currentUser.id) {
     db.Post.findByIdAndUpdate(
       req.params.postId,
       req.body,
@@ -129,10 +129,6 @@ const editPost = (req, res) => {
         });
       }
     );
-  } else {
-    return res
-      .status(401)
-      .json({ error: "You are not the author of this post" });
   }
 };
 
