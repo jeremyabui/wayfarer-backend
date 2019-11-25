@@ -72,11 +72,8 @@ const newPost = (req, res) => {
   console.log(req.body);
   if (!req.session.currentUser)
     return res.status(401).json({ error: "Login required" });
-
   db.Post.create(req.body, (err, newPost) => {
     if (err) return console.log(err);
-
-
     db.City.findById(req.body.city, (err, foundCity) => {
       if (err) return res.status(500);
       // Push ID of post to city's post propertY
@@ -84,7 +81,6 @@ const newPost = (req, res) => {
       // Save city
       foundCity.save((err, updatedCity) => {
         if (err) return res.status(400);
-
         db.User.findById(req.body.author, (err, foundUser) => {
 
           if (err) return res.status(500);
@@ -105,7 +101,7 @@ const newPost = (req, res) => {
       })
     })
   })
-}
+};
 
 
 const postDetail = (req, res) => {
@@ -121,7 +117,7 @@ const postDetail = (req, res) => {
 };
 
 const editPost = (req, res) => {
-  if (req.body.author == req.session.currentUser) {
+  if (req.body.author == req.session.currentUser.id) {
     db.Post.findByIdAndUpdate(
       req.params.postId,
       req.body,
@@ -136,10 +132,6 @@ const editPost = (req, res) => {
         });
       }
     );
-  } else {
-    return res
-      .status(401)
-      .json({ error: "You are not the author of this post" });
   }
 };
 
