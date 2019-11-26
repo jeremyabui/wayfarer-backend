@@ -16,7 +16,7 @@ const routes = require("./routes");
 
 // CORS
 const corsOptions = {
-  origin: ["https://serene-peak-87237.herokuapp.com"],
+  origin: ["https://wayfarer-damnbros.herokuapp.com"],
   credentials: true,
   optionsSuccessStatus: 200
 };
