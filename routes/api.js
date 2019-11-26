@@ -11,7 +11,6 @@ router.delete("/cities/delete/:cityId", ctrl.cities.destroy);
 
 // POSTS
 router.get("/posts", ctrl.posts.allPosts);
-// router.get("/posts/:userId", ctrl.posts.userPosts);
 router.post("/posts/newpost", ctrl.posts.newPost);
 router.get("/posts/:postId", ctrl.posts.postDetail);
 router.put("/posts/:postId", ctrl.posts.editPost);

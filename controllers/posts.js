@@ -1,12 +1,6 @@
 const db = require("../models");
 
-// This is when we have the postDetail page
-// const cityId = new URL(location.href).searchParams.get("id");
-
-// This is hard coded so far
-const cityId = "5dd6dacccba6bb5b72a016c1";
 // Index
-
 const allPosts = (req, res) => {
   db.Post.find({}, (err, posts) => {
     if (err) return console.log(err);
@@ -20,56 +14,7 @@ const allPosts = (req, res) => {
   });
 };
 
-// User ID post
-
-// const newPost = (req, res) => {
-//   console.log(req.body);
-//   if (!req.session.currentUser)
-//     return res.status(401).json({ error: "Login required" });
-//   db.Post.create(req.body, (err, newPost) => {
-//     if (err) return console.log(err);
-//     res.json({
-//       status: 201,
-//       message: "Created New Post",
-//       requestedAt: new Date().toLocaleString(),
-//       data: newPost
-//     })
-//   })
-//     // Then find city in database
-//       .then(db.City.findByIdAndUpdate(res.data.cityName, (err, foundCity) => {
-//         if (err) return res.status(500);
-//         // Push ID of post to city's post property
-//         foundCity.posts.push(res._id);
-//         // Save city
-//         foundCity.save((err, updatedCity) => {
-//           if (err) {
-//             return res.status(400);
-//           }
-//           // Respond with updated city
-//           res.json({
-//             status: 200,
-//             data: updatedCity,
-//           });
-//         })
-//       }))
-//         // Then find user by ID (current session)
-//         .then(db.User.findByIdAndUpdate(req.body.author, (err, foundUser) => {
-//           if (err) return res.status(500);
-//           // Push ID of post to user's post property
-//           foundUser.posts.push(req.body._id);
-//           // Save user
-//           foundUser.save((err, updatedUser) => {
-//             if (err) return res.status(400);
-//             res.json({
-//               status: 200,
-//               data: updatedUser,
-//             })
-//           })
-//         }))
-// };
-
 const newPost = (req, res) => {
-  console.log(req.body);
   if (!req.session.currentUser)
     return res.status(401).json({ error: "Login required" });
   db.Post.create(req.body, (err, newPost) => {
@@ -82,7 +27,6 @@ const newPost = (req, res) => {
       foundCity.save((err, updatedCity) => {
         if (err) return res.status(400);
         db.User.findById(req.body.author, (err, foundUser) => {
-
           if (err) return res.status(500);
           // Push ID of post to user's post property
           foundUser.posts.push(newPost._id);
@@ -90,7 +34,6 @@ const newPost = (req, res) => {
           foundUser.save((err, updatedUser) => {
             if (err) return res.status(400);
             res.json({
-
               status: 201,
               message: "Created New Post",
               requestedAt: new Date().toLocaleString(),

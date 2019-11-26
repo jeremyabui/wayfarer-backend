@@ -109,7 +109,6 @@ const verify = (req, res) => {
 
 // Logout
 const logout = (req, res) => {
-    console.log(req.session)
   if (!req.session.currentUser)
     return res.status(401).json({ status: 401, message: "Unauthorized" });
   req.session.destroy(err => {
