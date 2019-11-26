@@ -69,6 +69,4 @@ app.post('/upload', function(req, res) {
 });
 
 // Server start
-app.listen(PORT, () =>
-  console.log(`Server connected at http://localhost:${PORT}`)
-);
+app.listen(process.env.PORT || 3000)
