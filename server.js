@@ -16,7 +16,7 @@ const routes = require("./routes");
 
 // CORS
 const corsOptions = {
-  origin: ["http://localhost:3000"],
+  origin: ["https://serene-peak-87237.herokuapp.com"],
   credentials: true,
   optionsSuccessStatus: 200
 };
@@ -25,7 +25,7 @@ app.use(cors(corsOptions));
 // Session
 app.use(
   session({
-    store: new MongoStore({ url: process.env.MONGO_URI }),
+    store: new MongoStore({ url: process.env.MONGODB_URI }),
     secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false
@@ -69,4 +69,4 @@ app.post('/upload', function(req, res) {
 });
 
 // Server start
-app.listen(process.env.PORT || 3000)
+app.listen(process.env.PORT || 4000, () => console.log(`Server connected at http://localhost:${PORT}`))

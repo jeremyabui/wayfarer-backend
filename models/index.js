@@ -1,11 +1,9 @@
 const mongoose = require("mongoose");
 require("dotenv").config();
 // mongoose.connect( process.env.MONGODB_URI || "YOUR CURRENT LOCALHOST DB CONNECTION STRING HERE" );
-const dbUrl =
-mongoose.connect( process.env.MONGODB_URI || "YOUR CURRENT LOCALHOST DB CONNECTION STRING HERE" );
-
-mongoose
-  .connect(dbUrl, {
+const dbUrl = process.env.MONGODB_URI || "YOUR CURRENT LOCALHOST DB CONNECTION STRING HERE";
+console.log(dbUrl)
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
     useFindAndModify: false,
     useCreateIndex: true,
