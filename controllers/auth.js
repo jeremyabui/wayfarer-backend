@@ -122,20 +122,6 @@ const logout = (req, res) => {
   });
 };
 
-// Index
-const allUsers = (req, res) => {
-  db.User.find({}, (err, allUsers) => {
-    if (err) return console.log(err);
-    res.json({
-      status: 200,
-      msg: "Show all users",
-      requestedAd: new Date().toLocaleString(),
-      count: allUsers.length,
-      data: allUsers
-    });
-  });
-};
-
 const userDetail = (req, res) => {
   db.User.findById(req.params.userId)
     .populate('posts')
@@ -225,7 +211,6 @@ module.exports = {
   login,
   verify,
   logout,
-  allUsers,
   updateUser,
   userDetail,
   deleteUser

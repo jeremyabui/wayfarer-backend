@@ -1,0 +1,26 @@
+[
+  {
+    "title": "test1",
+    "body": "testbody1",
+    "cityName": "5dd8337eae70410e39bc3064", 
+    "author": "5dd5d7da78ea2815580b279c"
+  },
+  {
+    "title": "test2",
+    "body": "testbody2",
+    "cityName": "5dd8337eae70410e39bc3064", 
+    "author": "5dd5d7da78ea2815580b279c"
+  },
+  {
+    "title": "test3",
+    "body": "testbody3",
+    "cityName": "5dd8337eae70410e39bc3065", 
+    "author": "5dd5dfd88cec921827feba8a"
+  },
+  {
+    "title": "test4",
+    "body": "testbody4",
+    "cityName": "5dd8337eae70410e39bc3065", 
+    "author": "5dd5dfd88cec921827feba8a"
+  }
+]
