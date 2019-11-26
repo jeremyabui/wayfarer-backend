@@ -13,10 +13,10 @@ mongoose.connect(dbUrl, {
   .catch(err => console.log(`MongoDB connection: ${err} `));
 
 module.exports = {
-  // City: require("./City"),
+  City: require("./city"),
   User: require("./Users"),
-  Post: require("./Post"),
-  Comment: require('./Comments'),
+  Post: require("./post"),
+  Comment: require('./comments'),
 };
 
 // Comment to update
